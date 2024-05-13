@@ -1,3 +1,5 @@
+const knex = require('../config/knex');
+
 const getPosts = (req, res) => {
     try{
     knex.select('*').from('blog_posts')

@@ -1,3 +1,5 @@
+const knex = require('../config/knex');
+
 const getStudents = (req, res) => {
     try{
     knex.select('*').from('skoleni')
@@ -15,8 +17,8 @@ const getStudents = (req, res) => {
 
 const postStudents = (req, res) => {
     try{
-        knex('skoleni').insert({title: req.body.title, body: req.body.body}).then(
-            res.status(201).send({title: req.body.title, body: req.body.body})
+        knex('skoleni').insert({full_name: req.body.full_name, class_id: req.body.class_id}).then(
+            res.status(201).send({full_name: req.body.full_name, class_id: req.body.class_id})
         )
     } catch (err) {
         res.status(500).send({error:err.message})
@@ -26,9 +28,9 @@ const postStudents = (req, res) => {
 
 const getStudentsById = (req, res) => {
     try{
-        const postId = req.params.id
+        const class_id = req.params.id
         knex('skoleni')
-        .where ({id: postId})
+        .where ({id: class_id})
         .first('*')
         .then((row) => {
             res.send(row);

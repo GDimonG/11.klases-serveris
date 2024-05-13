@@ -8,4 +8,5 @@ const knex = require('knex')({
       database: 'dima',
     },
 });
+
 module.exports = knex;
