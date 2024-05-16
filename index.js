@@ -19,6 +19,8 @@ app.use('/posts', require('./routes/posts'));
 
 app.use('/students',require('./routes/students'));
 
+app.use('/klases', require('./routes/klases'));
+
 
 const port = 5000;
 
